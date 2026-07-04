@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboralize - Plataforma Educativa</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+  <div class="bg-grid"></div>
+  <div class="bg-overlay"></div>
+
+  <!-- Complex Navbar -->
+  <header class="navbar">
+    <div class="ed-container nav-container">
+      <div style="display: flex; align-items: center; gap: 2rem;">
+        <div class="logo" onclick="app.navigate('home')">Laboralize<span class="gold-dot">.</span></div>
+        <div class="nav-search-container" style="margin-left: 0;">
+          <input type="text" class="nav-search-input" placeholder="Buscar cursos...">
+          <button class="nav-search-btn">🔍</button>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 3rem;">
+        <div class="nav-links">
+          <a onclick="app.navigate('home')">Inicio</a>
+          <a onclick="app.navigate('catalog')">Capacitaciones</a>
+          <div class="dropdown">
+            <a href="#">Especialidades ▾</a>
+            <div class="dropdown-menu">
+              <a onclick="app.setFilter('Legal')">Legal Empresarial</a>
+              <a onclick="app.setFilter('Finanzas')">Finanzas y Tributación</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-auth" id="nav-auth-container">
+          <!-- Dynamic auth buttons -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main SPA Container -->
+  <main id="app-root" class="app-root">
+    <!-- Views will be injected here -->
+  </main>
+
+  <!-- Fat Footer -->
+  <footer class="footer">
+    <div class="ed-container footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">Laboralize<span class="gold-dot">.</span></div>
+          <p style="margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6;">Elevando el estándar del conocimiento legal y financiero en Perú y Latinoamérica. Aprende de expertos.</p>
+          <div class="social-links">
+            <span>🔵</span> <span>🔴</span> <span>📸</span> <span>💼</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <a href="#" onclick="app.navigate('catalog'); return false;">Cursos</a>
+          <a href="#">Rutas de Aprendizaje</a>
+          <a href="#">Certificados</a>
+        </div>
+        <div class="footer-col">
+          <h4>Comunidad</h4>
+          <a href="#">Blog Legal</a>
+          <a href="#">Foro de Estudiantes</a>
+          <a href="#">Eventos Presenciales</a>
+        </div>
+        <div class="footer-col">
+          <h4>Soporte</h4>
+          <a href="#" onclick="app.navigate('page', {slug: 'ayuda'}); return false;">Centro de Ayuda</a>
+          <a href="#" onclick="app.navigate('page', {slug: 'terminos'}); return false;">Términos y Condiciones</a>
+          <a href="#" onclick="app.navigate('page', {slug: 'privacidad'}); return false;">Políticas de Privacidad</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Laboralize EIRL. Plataforma desarrollada para la excelencia educativa.</p>
+        <div class="payment-methods">💳 🏦 📱 (Yape/Plin)</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container for Checkout / Login -->
+  <div id="modal-container" class="modal-overlay hidden">
+    <div class="modal-content" id="modal-content">
+      <!-- Modal content injected here -->
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
