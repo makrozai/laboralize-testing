@@ -42,17 +42,30 @@ const app = {
 
   renderNavAuth: () => {
     const container = document.getElementById('nav-auth-container');
+    const mobileContainer = document.getElementById('mobile-auth-container');
     if (window.db.currentUser) {
-      container.innerHTML = `
+      const authHtml = `
         <span style="color: var(--text-secondary); margin-right: 1rem; font-weight: bold;">Hola, ${window.db.currentUser.name.split(' ')[0]}</span>
-        <button class="btn btn-outline" onclick="app.navigate('intranet')">Intranet</button>
-        <button class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;" onclick="app.logout()">Salir</button>
+        <button class="btn btn-outline" onclick="app.navigate('intranet'); app.closeMobileMenu();">Intranet</button>
+        <button class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;" onclick="app.logout(); app.closeMobileMenu();">Salir</button>
       `;
+      container.innerHTML = authHtml;
+      mobileContainer.innerHTML = `<div style="display:flex; flex-direction:column; gap:1rem;">${authHtml}</div>`;
     } else {
-      container.innerHTML = `
-        <button class="btn btn-outline" onclick="app.showLoginModal()">Ingresar</button>
-      `;
+      const authHtml = `<button class="btn btn-outline" onclick="app.showLoginModal(); app.closeMobileMenu();">Ingresar</button>`;
+      container.innerHTML = authHtml;
+      mobileContainer.innerHTML = authHtml;
     }
+  },
+
+  toggleMobileMenu: () => {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('active');
+  },
+  
+  closeMobileMenu: () => {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) menu.classList.remove('active');
   },
 
   logout: () => { window.dbAPI.logout(); app.navigate('home'); },

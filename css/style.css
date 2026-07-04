@@ -235,3 +235,48 @@ body {
 .footer-col a:hover { color: var(--accent-gold); }
 .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; color: var(--text-secondary); font-size: 0.9rem; flex-wrap: wrap; gap: 1rem; }
 .payment-methods { font-size: 1.5rem; letter-spacing: 0.5rem; }
+
+/* ---------------------------------
+   MOBILE RESPONSIVE (max-width 768px)
+------------------------------------ */
+.mobile-menu-btn { display: none; background: transparent; border: none; color: #fff; font-size: 2rem; cursor: pointer; }
+.mobile-nav-overlay { display: none; position: fixed; top: 70px; left: 0; width: 100vw; height: calc(100vh - 70px); background: rgba(10, 15, 30, 0.98); backdrop-filter: blur(10px); z-index: 99; flex-direction: column; padding: 2rem; gap: 1.5rem; }
+.mobile-nav-overlay.active { display: flex; }
+.mobile-nav-overlay a { color: #fff; font-size: 1.5rem; text-decoration: none; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; }
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-links, .nav-search-container, .nav-auth { display: none !important; }
+  .mobile-menu-btn { display: block; }
+  .navbar { padding: 1rem 0; }
+  .logo { font-size: 1.5rem; }
+
+  /* Hero */
+  .hero { padding: 3rem 0 2rem 0; }
+  .hero h1 { font-size: 2.5rem; line-height: 1.2; }
+  .hero p { font-size: 1rem; }
+  
+  /* Stats & Trust */
+  .stats-grid { grid-template-columns: 1fr; padding: 1.5rem; }
+  .trust-grid { gap: 1rem; }
+  .trust-grid span { font-size: 1.2rem !important; }
+
+  /* Grids */
+  .course-grid, .path-grid, .learn-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .card-img { height: 180px; }
+  
+  /* Detail Page */
+  .detail-header { flex-direction: column; gap: 2rem; margin-top: 1rem; }
+  .detail-info h1 { font-size: 2.2rem; }
+  .detail-info p { font-size: 1rem; }
+  .detail-sidebar { width: 100%; min-width: auto; position: static; }
+  .tab-section { margin-top: 2rem; padding-top: 2rem; }
+  
+  /* Certificate */
+  .certificate-view { padding: 1.5rem; }
+  .cert-title { font-size: 1.8rem; }
+  .cert-name { font-size: 2.5rem; }
+  .cert-course { font-size: 1.2rem; }
+  .cert-signatures { flex-direction: column; gap: 2rem; align-items: center; margin-top: 2rem; }
+  .cert-logo { position: static; margin-top: 2rem; }
+}

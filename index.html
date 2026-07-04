@@ -40,7 +40,15 @@
         <div class="nav-auth" id="nav-auth-container">
           <!-- Dynamic auth buttons -->
         </div>
+        <button class="mobile-menu-btn" onclick="app.toggleMobileMenu()">☰</button>
       </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-menu">
+      <a href="#" onclick="app.navigate('home'); app.toggleMobileMenu(); return false;">Inicio</a>
+      <a href="#" onclick="app.navigate('catalog'); app.toggleMobileMenu(); return false;">Capacitaciones</a>
+      <div id="mobile-auth-container"></div>
     </div>
   </header>
 
