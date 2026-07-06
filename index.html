@@ -3,41 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Laboralize - Plataforma Educativa</title>
+  <title>Laboralize - Domina el Derecho Laboral Empresarial</title>
   
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            'navy-primary': '#0a0f1e',
+            'navy-dark': '#070a14',
+            'accent-gold': '#d4af37',
+            'glass-border': 'rgba(255, 255, 255, 0.1)',
+            'glass-bg': 'rgba(255, 255, 255, 0.05)',
+            'text-secondary': '#a0aec0'
+          },
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif']
+          },
+          keyframes: {
+            slideIn: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          },
+          maxWidth: {
+            'container': '1200px'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Tailwind Custom CSS -->
+  <style type="text/tailwindcss">
+    @layer base {
+      body {
+        @apply bg-navy-primary text-white font-inter m-0 p-0 antialiased;
+      }
+      * {
+        @apply box-border;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { @apply w-2; }
+      ::-webkit-scrollbar-track { @apply bg-navy-dark; }
+      ::-webkit-scrollbar-thumb { @apply bg-accent-gold/50 rounded-full; }
+    }
+
+    @layer components {
+      .ed-container {
+        @apply w-[90%] max-w-container mx-auto px-0 md:px-0;
+      }
+      
+      .btn {
+        @apply px-6 py-3 rounded-md font-semibold cursor-pointer transition-all duration-300 border-none inline-block text-center shadow-lg active:scale-95;
+      }
+      .btn:hover {
+        @apply transform -translate-y-[2px] shadow-xl;
+      }
+      .btn-primary {
+        @apply bg-accent-gold text-black hover:bg-white;
+      }
+      .btn-outline {
+        @apply bg-transparent border border-white/20 text-white hover:bg-white/10;
+      }
+      .btn-success {
+        @apply bg-green-600 text-white hover:bg-green-500;
+      }
+
+      .card {
+        @apply bg-glass-bg border border-glass-border rounded-xl overflow-hidden transition-all duration-300 backdrop-blur-md cursor-pointer;
+      }
+      .card:hover {
+        @apply transform -translate-y-2 border-accent-gold/50 shadow-[0_10px_30px_rgba(212,175,55,0.1)];
+      }
+
+      .badge {
+        @apply px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+      }
+
+      .glass-panel {
+        @apply bg-glass-bg border border-glass-border rounded-xl p-6 backdrop-blur-md;
+      }
+
+      /* Navbar */
+      .navbar {
+        @apply sticky top-0 bg-navy-primary/90 backdrop-blur-md border-b border-glass-border z-50 py-4 md:py-6 transition-all;
+      }
+      .nav-container {
+        @apply flex justify-between items-center px-4 md:px-0;
+      }
+      
+      .logo {
+        @apply font-outfit text-2xl font-bold cursor-pointer text-white flex items-center;
+      }
+      .gold-dot {
+        @apply text-accent-gold;
+      }
+
+      /* Dropdown */
+      .dropdown {
+        @apply relative inline-block;
+      }
+      .dropdown-menu {
+        @apply hidden absolute top-full left-0 bg-navy-primary border border-glass-border rounded-lg shadow-xl min-w-[220px] p-2 z-50 mt-1;
+      }
+      .dropdown:hover .dropdown-menu {
+        @apply block animate-[fadeIn_0.2s_ease-out];
+      }
+      .dropdown-menu a {
+        @apply block px-4 py-2 text-text-secondary hover:text-accent-gold hover:bg-white/5 rounded-md transition-colors;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu-btn {
+        @apply md:hidden bg-transparent border-none text-white text-3xl cursor-pointer p-2;
+      }
+      .mobile-nav-overlay {
+        @apply hidden fixed top-[70px] left-0 w-full h-[calc(100vh-70px)] bg-navy-primary/95 backdrop-blur-md z-[99] flex-col p-8 gap-6;
+      }
+      .mobile-nav-overlay.active {
+        @apply flex animate-[fadeIn_0.2s_ease-out];
+      }
+      .mobile-nav-overlay a {
+        @apply text-white text-2xl no-underline border-b border-glass-border pb-4 hover:text-accent-gold transition-colors;
+      }
+
+      /* Course Layout */
+      .detail-header {
+        @apply flex flex-col md:flex-row gap-8 mt-4;
+      }
+      .detail-info {
+        @apply flex-[2];
+      }
+      .detail-sidebar {
+        @apply flex-1 bg-navy-dark border border-glass-border rounded-xl p-6 md:sticky md:top-28 self-start;
+      }
+
+      /* Forms */
+      .form-control {
+        @apply w-full p-3 rounded-lg bg-white/5 border border-glass-border text-white focus:outline-none focus:border-accent-gold transition-colors;
+      }
+    }
+  </style>
+
+  <!-- External Styles for specific complex components (e.g. Diploma rendering) -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   
-  <div class="bg-grid"></div>
-  <div class="bg-overlay"></div>
-
-  <!-- Complex Navbar -->
   <header class="navbar">
     <div class="ed-container nav-container">
-      <div style="display: flex; align-items: center; gap: 2rem;">
+      <div class="flex items-center gap-6">
         <div class="logo" onclick="app.navigate('home')">Laboralize<span class="gold-dot">.</span></div>
-        <div class="nav-search-container" style="margin-left: 0;">
-          <input type="text" class="nav-search-input" placeholder="Buscar cursos...">
-          <button class="nav-search-btn">🔍</button>
+        <div class="hidden md:block relative w-64">
+          <input type="text" class="w-full bg-white/5 border border-glass-border rounded-full py-2 px-4 text-sm text-white focus:outline-none focus:border-accent-gold" placeholder="Buscar cursos..." id="global-search" onkeyup="if(event.key === 'Enter') { app.setFilter(this.value); this.value=''; }">
+          <span class="absolute right-3 top-2.5 text-text-secondary text-sm">🔍</span>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 3rem;">
-        <div class="nav-links">
-          <a onclick="app.navigate('home')">Inicio</a>
-          <a onclick="app.navigate('catalog')">Capacitaciones</a>
-          <div class="dropdown">
-            <a href="#">Especialidades ▾</a>
+      
+      <div class="flex items-center gap-8">
+        <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a class="cursor-pointer hover:text-accent-gold transition-colors" onclick="app.navigate('home')">Inicio</a>
+          <a class="cursor-pointer hover:text-accent-gold transition-colors" onclick="app.navigate('catalog')">Capacitaciones</a>
+          <div class="dropdown py-2">
+            <a href="#" class="cursor-pointer hover:text-accent-gold transition-colors">Especialidades ▾</a>
             <div class="dropdown-menu">
-              <a onclick="app.setFilter('Legal')">Legal Empresarial</a>
-              <a onclick="app.setFilter('Finanzas')">Finanzas y Tributación</a>
+              <a onclick="app.setFilter('Legal')" class="cursor-pointer">Legal Empresarial</a>
+              <a onclick="app.setFilter('Finanzas')" class="cursor-pointer">Finanzas y Tributación</a>
             </div>
           </div>
         </div>
-        <div class="nav-auth" id="nav-auth-container">
+        <div class="hidden md:block" id="nav-auth-container">
           <!-- Dynamic auth buttons -->
         </div>
         <button class="mobile-menu-btn" onclick="app.toggleMobileMenu()">☰</button>
@@ -52,55 +198,71 @@
     </div>
   </header>
 
-  <!-- Main SPA Container -->
-  <main id="app-root" class="app-root">
-    <!-- Views will be injected here -->
+  <main id="app-root">
+    <!-- View content injected here -->
   </main>
 
-  <!-- Fat Footer -->
-  <footer class="footer">
-    <div class="ed-container footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">Laboralize<span class="gold-dot">.</span></div>
-          <p style="margin-bottom: 1rem; color: var(--text-secondary); line-height: 1.6;">Elevando el estándar del conocimiento legal y financiero en Perú y Latinoamérica. Aprende de expertos.</p>
-          <div class="social-links">
-            <span>🔵</span> <span>🔴</span> <span>📸</span> <span>💼</span>
+  <footer class="bg-navy-dark pt-16 pb-8 border-t border-glass-border mt-20">
+    <div class="ed-container px-4 md:px-0">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-1">
+          <div class="logo mb-4">Laboralize<span class="gold-dot">.</span></div>
+          <p class="text-text-secondary text-sm mb-6">Plataforma premium de capacitación corporativa, legal y tributaria para empresas y profesionales en Perú y Latinoamérica.</p>
+          <div class="flex gap-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">in</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">yt</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">ig</a>
           </div>
         </div>
-        <div class="footer-col">
-          <h4>Plataforma</h4>
-          <a href="#" onclick="app.navigate('catalog'); return false;">Cursos</a>
-          <a href="#">Rutas de Aprendizaje</a>
-          <a href="#">Certificados</a>
+        
+        <div>
+          <h4 class="font-outfit font-bold text-lg mb-6">Estudia</h4>
+          <ul class="flex flex-col gap-3 text-text-secondary text-sm">
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Cursos de Derecho</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Cursos de Tributación</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Diplomados Corporativos</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Planes para Empresas</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Ver Certificados</a></li>
+          </ul>
         </div>
-        <div class="footer-col">
-          <h4>Comunidad</h4>
-          <a href="#">Blog Legal</a>
-          <a href="#">Foro de Estudiantes</a>
-          <a href="#">Eventos Presenciales</a>
+        
+        <div>
+          <h4 class="font-outfit font-bold text-lg mb-6">Nosotros</h4>
+          <ul class="flex flex-col gap-3 text-text-secondary text-sm">
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Conoce a Carolina</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Nuestra Metodología</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Casos de Éxito</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Trabaja con nosotros</a></li>
+          </ul>
         </div>
-        <div class="footer-col">
-          <h4>Soporte</h4>
-          <a href="#" onclick="app.navigate('page', {slug: 'ayuda'}); return false;">Centro de Ayuda</a>
-          <a href="#" onclick="app.navigate('page', {slug: 'terminos'}); return false;">Términos y Condiciones</a>
-          <a href="#" onclick="app.navigate('page', {slug: 'privacidad'}); return false;">Políticas de Privacidad</a>
+        
+        <div>
+          <h4 class="font-outfit font-bold text-lg mb-6">Soporte</h4>
+          <ul class="flex flex-col gap-3 text-text-secondary text-sm">
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Centro de Ayuda</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Términos y Condiciones</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Políticas de Privacidad</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Libro de Reclamaciones</a></li>
+            <li><a href="#" class="hover:text-accent-gold transition-colors">Contacto</a></li>
+          </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Laboralize EIRL. Plataforma desarrollada para la excelencia educativa.</p>
-        <div class="payment-methods">💳 🏦 📱 (Yape/Plin)</div>
+      
+      <div class="pt-8 border-t border-glass-border flex flex-col md:flex-row justify-between items-center text-text-secondary text-sm gap-4">
+        <p>&copy; 2026 Laboralize. Todos los derechos reservados.</p>
+        <div class="text-2xl tracking-widest text-white/50">
+          VISA ◯◯ AMEX
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Modal Container for Checkout / Login -->
-  <div id="modal-container" class="modal-overlay hidden">
-    <div class="modal-content" id="modal-content">
-      <!-- Modal content injected here -->
-    </div>
+  <!-- Modals -->
+  <div id="modal-container" class="hidden fixed inset-0 bg-navy-primary/95 backdrop-blur-md z-[100] flex items-center justify-center p-4">
+    <div id="modal-content" class="relative animate-[slideIn_0.3s_ease-out]"></div>
   </div>
 
+  <!-- DB and Logic -->
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
 </body>
