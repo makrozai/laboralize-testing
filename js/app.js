@@ -46,13 +46,13 @@ const app = {
     if (window.db.currentUser) {
       const authHtml = `
         <span class="text-text-secondary mr-4 font-bold">Hola, ${window.db.currentUser.name.split(' ')[0]}</span>
-        <button class="btn btn-outline" onclick="app.navigate('intranet'); app.closeMobileMenu();">Intranet</button>
-        <button class="btn btn-outline border-red-500 text-red-500 hover:bg-red-500/10" onclick="app.logout(); app.closeMobileMenu();">Salir</button>
+        <button class="btn btn-outline px-4" title="Intranet" onclick="app.navigate('intranet'); app.closeMobileMenu();"><i class="fa-solid fa-graduation-cap"></i></button>
+        <button class="btn btn-outline border-red-500 text-red-500 hover:bg-red-500/10 px-4" title="Cerrar Sesión" onclick="app.logout(); app.closeMobileMenu();"><i class="fa-solid fa-right-from-bracket"></i></button>
       `;
       container.innerHTML = authHtml;
-      mobileContainer.innerHTML = `<div class="flex flex-col gap-4">${authHtml}</div>`;
+      mobileContainer.innerHTML = `<div class="flex flex-row justify-center items-center gap-4 mt-4">${authHtml}</div>`;
     } else {
-      const authHtml = `<button class="btn btn-outline" onclick="app.showLoginModal(); app.closeMobileMenu();">Ingresar</button>`;
+      const authHtml = `<button class="btn btn-outline px-4" title="Ingresar" onclick="app.showLoginModal(); app.closeMobileMenu();"><i class="fa-solid fa-user"></i></button>`;
       container.innerHTML = authHtml;
       mobileContainer.innerHTML = authHtml;
     }
@@ -75,7 +75,7 @@ const app = {
     const c = window.dbAPI.getCourse(courseId);
     const html = `
       <div class="relative w-full max-w-5xl mx-auto animate-[slideIn_0.3s_ease-out]">
-        <button class="absolute -top-10 right-0 text-text-secondary hover:text-white text-4xl bg-transparent border-none cursor-pointer z-50" onclick="app.closeModal()">&times;</button>
+        <button class="absolute -top-10 right-0 text-text-secondary hover:text-white text-4xl bg-transparent border-none cursor-pointer z-50" onclick="app.closeModal()"><i class="fa-solid fa-xmark"></i></button>
         <video class="w-full aspect-video bg-black rounded-xl border border-glass-border object-cover shadow-2xl" controls autoplay>
           <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
           Tu navegador no soporta videos HTML5.
@@ -97,7 +97,7 @@ const app = {
   showLoginModal: () => {
     const html = `
       <div class="bg-navy-dark border border-glass-border rounded-2xl w-full max-w-md p-8 relative shadow-2xl mx-auto">
-        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-3xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()">&times;</button>
+        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-3xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()"><i class="fa-solid fa-xmark"></i></button>
         <div class="text-center mb-8">
           <div class="logo justify-center mb-2">Laboralize<span class="gold-dot">.</span></div>
           <p class="text-text-secondary text-sm">Ingresa a tu cuenta para continuar</p>
@@ -134,7 +134,7 @@ const app = {
     const course = window.dbAPI.getCourse(courseId);
     const html = `
       <div class="bg-navy-dark border border-glass-border rounded-2xl w-full max-w-md p-8 relative shadow-2xl mx-auto">
-        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-3xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()">&times;</button>
+        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-3xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()"><i class="fa-solid fa-xmark"></i></button>
         <div class="text-center mb-6">
           <span class="text-[#009ee3] font-bold text-2xl">MercadoPago</span>
           <div class="text-xs text-text-secondary mt-1">Entorno de Simulación</div>
@@ -160,7 +160,7 @@ const app = {
   showB2BModal: () => {
     const html = `
       <div class="bg-navy-dark border border-glass-border rounded-2xl w-full max-w-md p-8 relative shadow-2xl mx-auto">
-        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-4xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()">&times;</button>
+        <button class="absolute top-4 right-4 text-text-secondary hover:text-white text-4xl bg-transparent border-none cursor-pointer leading-none" onclick="app.closeModal()"><i class="fa-solid fa-xmark"></i></button>
         <div class="text-center mb-8">
           <div class="inline-block px-4 py-1 bg-accent-gold/10 border border-accent-gold text-accent-gold rounded-full text-xs font-bold mb-4 uppercase tracking-widest">
             LABORALIZE PARA EMPRESAS
@@ -207,7 +207,7 @@ const app = {
     const content = element.nextElementSibling;
     content.classList.toggle('hidden');
     const icon = element.querySelector('.acc-icon');
-    icon.textContent = content.classList.contains('hidden') ? '+' : '-';
+    icon.innerHTML = content.classList.contains('hidden') ? '<i class="fa-solid fa-chevron-down"></i>' : '<i class="fa-solid fa-chevron-up"></i>';
   }
 };
 
@@ -280,7 +280,7 @@ const views = {
               <!-- Floating Card -->
               <div class="absolute -bottom-6 -right-6 md:bottom-10 md:-right-10 bg-navy-dark border border-glass-border p-6 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
                 <div class="flex items-center gap-4">
-                  <div class="bg-accent-gold/20 p-3 rounded-full text-accent-gold text-2xl">⚖️</div>
+                  <div class="bg-accent-gold/20 p-3 rounded-full text-accent-gold text-2xl"><i class="fa-solid fa-scale-balanced"></i></div>
                   <div>
                     <div class="text-white font-bold font-outfit text-xl">10+ Años</div>
                     <div class="text-text-secondary text-sm">Experiencia Corporativa</div>
@@ -331,7 +331,7 @@ const views = {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="bg-gradient-to-b from-white/5 to-transparent border border-glass-border p-8 rounded-2xl hover:-translate-y-3 transition-transform duration-300 relative group overflow-hidden">
               <div class="absolute top-0 right-0 w-32 h-32 bg-accent-gold/10 rounded-bl-[100px] -z-10 group-hover:bg-accent-gold/20 transition-colors"></div>
-              <div class="text-accent-gold text-xl mb-4">★★★★★</div>
+              <div class="flex gap-1 text-accent-gold text-sm mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               <p class="text-white italic mb-8 relative">
                 <span class="text-4xl text-glass-border absolute -top-4 -left-2">"</span>
                 La capacitación in-house para nuestro departamento de RRHH fue un éxito rotundo. Ahorramos miles de dólares previniendo contingencias laborales.
@@ -347,7 +347,7 @@ const views = {
 
             <div class="bg-gradient-to-b from-white/5 to-transparent border border-glass-border p-8 rounded-2xl hover:-translate-y-3 transition-transform duration-300 relative group overflow-hidden md:-mt-8 md:mb-8">
               <div class="absolute top-0 right-0 w-32 h-32 bg-accent-gold/10 rounded-bl-[100px] -z-10 group-hover:bg-accent-gold/20 transition-colors"></div>
-              <div class="text-accent-gold text-xl mb-4">★★★★★</div>
+              <div class="flex gap-1 text-accent-gold text-sm mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               <p class="text-white italic mb-8 relative">
                 <span class="text-4xl text-glass-border absolute -top-4 -left-2">"</span>
                 El curso de Finanzas Corporativas es el más práctico que he tomado. Carolina va directo a lo que realmente pasa en los tribunales y directorios.
@@ -363,7 +363,7 @@ const views = {
 
             <div class="bg-gradient-to-b from-white/5 to-transparent border border-glass-border p-8 rounded-2xl hover:-translate-y-3 transition-transform duration-300 relative group overflow-hidden">
               <div class="absolute top-0 right-0 w-32 h-32 bg-accent-gold/10 rounded-bl-[100px] -z-10 group-hover:bg-accent-gold/20 transition-colors"></div>
-              <div class="text-accent-gold text-xl mb-4">★★★★★</div>
+              <div class="flex gap-1 text-accent-gold text-sm mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
               <p class="text-white italic mb-8 relative">
                 <span class="text-4xl text-glass-border absolute -top-4 -left-2">"</span>
                 Compramos licencias para todo el equipo contable. La calidad del contenido y la facilidad de la plataforma Laboralize superó nuestras expectativas.
@@ -412,9 +412,9 @@ const views = {
                 Adquiere licencias corporativas o agenda una mentoría in-house con Carolina. Realizamos auditorías preventivas y capacitamos a tu directorio para mitigar riesgos fiscales y laborales.
               </p>
               <ul class="text-left text-white mb-10 flex flex-col gap-4">
-                <li class="flex items-center gap-3"><span class="text-accent-gold text-xl">✓</span> Precios especiales por volumen de licencias</li>
-                <li class="flex items-center gap-3"><span class="text-accent-gold text-xl">✓</span> Cursos a medida según el rubro de tu empresa</li>
-                <li class="flex items-center gap-3"><span class="text-accent-gold text-xl">✓</span> Certificación directa de Carolina para tu equipo</li>
+                <li class="flex items-center gap-3"><span class="text-accent-gold text-lg"><i class="fa-solid fa-check"></i></span> Precios especiales por volumen de licencias</li>
+                <li class="flex items-center gap-3"><span class="text-accent-gold text-lg"><i class="fa-solid fa-check"></i></span> Cursos a medida según el rubro de tu empresa</li>
+                <li class="flex items-center gap-3"><span class="text-accent-gold text-lg"><i class="fa-solid fa-check"></i></span> Certificación directa de Carolina para tu equipo</li>
               </ul>
               <button class="btn btn-primary text-lg px-8 py-4 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)]" onclick="app.showB2BModal()">
                 Contactar a Ventas
@@ -425,21 +425,21 @@ const views = {
               <div class="absolute inset-0 bg-accent-gold/20 blur-[80px] rounded-full"></div>
               <div class="bg-black/40 border border-glass-border rounded-2xl p-6 backdrop-blur-md relative transform rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
                 <div class="flex items-center gap-4 border-b border-glass-border pb-4 mb-4">
-                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold">💼</div>
+                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold"><i class="fa-solid fa-briefcase"></i></div>
                   <div>
                     <div class="text-white font-bold">Mentoría Privada</div>
                     <div class="text-text-secondary text-xs">Agendamiento In-House</div>
                   </div>
                 </div>
                 <div class="flex items-center gap-4 border-b border-glass-border pb-4 mb-4">
-                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold">🏢</div>
+                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold"><i class="fa-solid fa-building"></i></div>
                   <div>
                     <div class="text-white font-bold">Capacitación Masiva</div>
                     <div class="text-text-secondary text-xs">Licencias Corporativas</div>
                   </div>
                 </div>
                 <div class="flex items-center gap-4">
-                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold">🔍</div>
+                  <div class="w-10 h-10 rounded-full bg-accent-gold/20 flex items-center justify-center text-accent-gold"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                   <div>
                     <div class="text-white font-bold">Auditoría Preventiva</div>
                     <div class="text-text-secondary text-xs">Diagnóstico Legal</div>
@@ -504,13 +504,13 @@ const views = {
       <div class="border border-glass-border rounded-xl mb-4 overflow-hidden">
         <div class="bg-glass-bg p-4 flex justify-between items-center cursor-pointer select-none hover:bg-white/5 transition-colors" onclick="app.toggleAccordion(this)">
           <span class="font-bold text-white">${m.title}</span>
-          <span class="acc-icon text-accent-gold text-2xl font-bold leading-none">-</span>
+          <span class="acc-icon text-accent-gold text-lg"><i class="fa-solid fa-chevron-up"></i></span>
         </div>
         <div class="bg-navy-dark p-4 border-t border-glass-border">
           <ul class="flex flex-col gap-3">
             ${m.lessons.map(l => `
               <li class="flex justify-between items-center text-sm">
-                <span class="text-white flex items-center gap-3"><span class="text-text-secondary text-xs">▶</span> ${l.title}</span>
+                <span class="text-white flex items-center gap-3"><span class="text-text-secondary text-xs"><i class="fa-solid fa-circle-play"></i></span> ${l.title}</span>
                 <span class="text-text-secondary">${l.duration}</span>
               </li>
             `).join('')}
@@ -523,7 +523,7 @@ const views = {
         <img src="${c.image}" class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105" alt="Trailer">
         <div class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-colors">
           <div class="bg-accent-gold text-black font-bold px-6 py-3 rounded-full flex items-center gap-2 transform group-hover:scale-110 transition-transform shadow-lg">
-            <span>▶</span> Ver Trailer
+            <span class="text-sm"><i class="fa-solid fa-play"></i></span> Ver Trailer
           </div>
         </div>
       </div>
@@ -546,18 +546,18 @@ const views = {
             <p class="text-lg text-text-secondary leading-relaxed mb-10">${c.description}</p>
             
             <div class="flex flex-wrap gap-8 mb-12 pb-8 border-b border-glass-border">
-              <div><strong class="text-white block mb-1">👨‍🏫 Mentoría</strong><span class="text-text-secondary text-sm">Carolina (Abogada Experta)</span></div>
-              <div><strong class="text-white block mb-1">⭐ Calificación</strong><span class="text-accent-gold">★★★★★</span> <span class="text-text-secondary text-sm">(4.9/5)</span></div>
-              <div><strong class="text-white block mb-1">🏆 Certificado</strong><span class="text-text-secondary text-sm">Digital Avalado</span></div>
+              <div><strong class="text-white block mb-1"><i class="fa-solid fa-chalkboard-user"></i> Mentoría</strong><span class="text-text-secondary text-sm">Carolina (Abogada Experta)</span></div>
+              <div><strong class="text-white block mb-1"><i class="fa-solid fa-star"></i> Calificación</strong><span class="text-accent-gold text-xs"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span> <span class="text-text-secondary text-sm">(4.9/5)</span></div>
+              <div><strong class="text-white block mb-1"><i class="fa-solid fa-award"></i> Certificado</strong><span class="text-text-secondary text-sm">Digital Avalado</span></div>
             </div>
 
             <div class="mb-12">
               <h2 class="text-2xl font-outfit font-bold mb-6">¿Qué aprenderás en este curso?</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold">✓</span> <span class="text-text-secondary text-sm">Dominar los conceptos fundamentales y avanzados del área.</span></div>
-                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold">✓</span> <span class="text-text-secondary text-sm">Aplicar estrategias reales utilizadas por corporaciones.</span></div>
-                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold">✓</span> <span class="text-text-secondary text-sm">Evitar las contingencias legales más costosas del mercado.</span></div>
-                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold">✓</span> <span class="text-text-secondary text-sm">Optimizar procesos internos para tus clientes o estudio.</span></div>
+                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold"><i class="fa-solid fa-check"></i></span> <span class="text-text-secondary text-sm">Dominar los conceptos fundamentales y avanzados del área.</span></div>
+                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold"><i class="fa-solid fa-check"></i></span> <span class="text-text-secondary text-sm">Aplicar estrategias reales utilizadas por corporaciones.</span></div>
+                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold"><i class="fa-solid fa-check"></i></span> <span class="text-text-secondary text-sm">Evitar las contingencias legales más costosas del mercado.</span></div>
+                <div class="flex items-start gap-3"><span class="text-accent-gold font-bold"><i class="fa-solid fa-check"></i></span> <span class="text-text-secondary text-sm">Optimizar procesos internos para tus clientes o estudio.</span></div>
               </div>
             </div>
 
@@ -579,12 +579,12 @@ const views = {
               <h2 class="text-2xl font-outfit font-bold mb-6">Opiniones de Alumnos</h2>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white/5 border border-glass-border rounded-xl p-6">
-                  <div class="text-accent-gold text-lg mb-3">★★★★★</div>
+                  <div class="text-accent-gold text-sm mb-3 flex gap-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                   <div class="text-text-secondary text-sm italic mb-4 leading-relaxed">"Increíble curso. Carolina explica los temas corporativos complejos con una facilidad brutal. Totalmente recomendado."</div>
                   <div class="text-white font-bold text-sm">- Carlos M., Abogado Senior</div>
                 </div>
                 <div class="bg-white/5 border border-glass-border rounded-xl p-6">
-                  <div class="text-accent-gold text-lg mb-3">★★★★★</div>
+                  <div class="text-accent-gold text-sm mb-3 flex gap-1"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
                   <div class="text-text-secondary text-sm italic mb-4 leading-relaxed">"La inversión se pagó sola en el primer caso que apliqué lo aprendido. El material de apoyo es de primera calidad."</div>
                   <div class="text-white font-bold text-sm">- Andrea P., Asesora Legal</div>
                 </div>
@@ -603,9 +603,9 @@ const views = {
               
               <div class="mt-8 border-t border-glass-border pt-6 text-text-secondary text-sm flex flex-col gap-3">
                 <div class="mb-2 text-white font-medium">Requisitos: Ningún conocimiento previo estrictamente necesario.</div>
-                <div class="flex items-center gap-3"><span class="text-green-400 font-bold">✓</span> Acceso de por vida</div>
-                <div class="flex items-center gap-3"><span class="text-green-400 font-bold">✓</span> Certificado digital al finalizar</div>
-                <div class="flex items-center gap-3"><span class="text-green-400 font-bold">✓</span> Pago 100% seguro (MercadoPago)</div>
+                <div class="flex items-center gap-3"><span class="text-green-400 font-bold"><i class="fa-solid fa-check"></i></span> Acceso de por vida</div>
+                <div class="flex items-center gap-3"><span class="text-green-400 font-bold"><i class="fa-solid fa-check"></i></span> Certificado digital al finalizar</div>
+                <div class="flex items-center gap-3"><span class="text-green-400 font-bold"><i class="fa-solid fa-check"></i></span> Pago 100% seguro (MercadoPago)</div>
               </div>
             </div>
           </div>
@@ -640,8 +640,8 @@ const views = {
           const progress = isCompleted ? 100 : 35;
           const statusText = isCompleted ? "100% Completado" : "35% Completado";
           const actionBtn = isCompleted 
-            ? `<button class="btn btn-outline w-full border-accent-gold text-accent-gold font-bold hover:bg-accent-gold/10" onclick="app.navigate('page', {slug: 'certificados'})">🏆 Ver Certificado</button>`
-            : `<button class="btn btn-success w-full font-bold" onclick="app.navigate('player', {id: ${c.id}})">▶ Continuar clase</button>`;
+            ? `<button class="btn btn-outline w-full border-accent-gold text-accent-gold font-bold hover:bg-accent-gold/10" onclick="app.navigate('page', {slug: 'certificados'})"><i class="fa-solid fa-award"></i> Ver Certificado</button>`
+            : `<button class="btn btn-success w-full font-bold" onclick="app.navigate('player', {id: ${c.id}})"><i class="fa-solid fa-play"></i> Continuar clase</button>`;
           
           return `
           <div class="card flex flex-col h-full">
@@ -665,7 +665,7 @@ const views = {
             <h1 class="font-outfit text-4xl font-bold mb-2 text-white">Mi Aprendizaje</h1>
             <p class="text-text-secondary text-lg">Bienvenido de nuevo, <strong class="text-white">${user.name}</strong>. Es hora de continuar.</p>
           </div>
-          <button class="btn btn-primary" onclick="app.navigate('page', {slug: 'certificados'})">🏆 Mis Certificados</button>
+          <button class="btn btn-primary" onclick="app.navigate('page', {slug: 'certificados'})"><i class="fa-solid fa-award"></i> Mis Certificados</button>
         </div>
         ${gridHtml}
       </div>
@@ -679,14 +679,14 @@ const views = {
     const isCompleted = completedIds.includes(Number(c.id));
 
     const topButton = isCompleted 
-      ? `<button class="btn btn-outline border-accent-gold text-accent-gold font-bold hover:bg-accent-gold/10" onclick="app.navigate('page', {slug: 'certificados'})">🏆 Ver Certificado</button>`
-      : `<button class="btn btn-success font-bold" onclick="alert('Marcado como completado. ¡Progreso guardado!')">Siguiente Clase ▶</button>`;
+      ? `<button class="btn btn-outline border-accent-gold text-accent-gold font-bold hover:bg-accent-gold/10" onclick="app.navigate('page', {slug: 'certificados'})"><i class="fa-solid fa-award"></i> Ver Certificado</button>`
+      : `<button class="btn btn-success font-bold" onclick="alert('Marcado como completado. ¡Progreso guardado!')">Siguiente Clase <i class="fa-solid fa-play ml-1"></i></button>`;
 
     const playlistHtml = c.modules.map(m => `
       <div class="bg-black/40 px-6 py-4 font-bold text-sm text-text-secondary border-b border-glass-border">${m.title}</div>
       ${m.lessons.map((l, index) => `
         <div class="flex items-center gap-4 px-6 py-4 border-b border-glass-border cursor-pointer hover:bg-white/5 transition-colors ${index === 0 ? 'bg-white/10 border-l-2 border-l-accent-gold' : ''}">
-          <div class="text-xs ${index === 0 ? 'text-accent-gold' : 'text-text-secondary'}">${index === 0 ? '▶' : '○'}</div>
+          <div class="text-xs ${index === 0 ? 'text-accent-gold' : 'text-text-secondary'}">${index === 0 ? '<i class="fa-solid fa-circle-play"></i>' : '<i class="fa-regular fa-circle"></i>'}</div>
           <div>
             <div class="text-sm ${index === 0 ? 'text-white font-bold' : 'text-text-secondary'}">${l.title}</div>
             <div class="text-xs text-text-secondary mt-1">${l.duration}</div>
@@ -808,4 +808,16 @@ const views = {
   }
 };
 
-window.addEventListener('DOMContentLoaded', () => { app.navigate('home'); });
+window.addEventListener('DOMContentLoaded', () => { 
+  app.navigate('home'); 
+  
+  // Navbar shrink effect on scroll
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+});

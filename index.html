@@ -7,6 +7,8 @@
   
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +99,10 @@
 
       /* Navbar */
       .navbar {
-        @apply sticky top-0 bg-navy-primary/90 backdrop-blur-md border-b border-glass-border z-50 py-4 md:py-6 transition-all;
+        @apply sticky top-0 bg-navy-primary/90 backdrop-blur-md border-b border-glass-border z-50 py-4 md:py-6 transition-all duration-300;
+      }
+      .navbar.scrolled {
+        @apply py-2 md:py-3 shadow-lg bg-navy-primary/95;
       }
       .nav-container {
         @apply flex justify-between items-center px-4 md:px-0;
@@ -167,7 +172,7 @@
         <div class="logo" onclick="app.navigate('home')">Laboralize<span class="gold-dot">.</span></div>
         <div class="hidden md:block relative w-64">
           <input type="text" class="w-full bg-white/5 border border-glass-border rounded-full py-2 px-4 text-sm text-white focus:outline-none focus:border-accent-gold" placeholder="Buscar cursos..." id="global-search" onkeyup="if(event.key === 'Enter') { app.setFilter(this.value); this.value=''; }">
-          <span class="absolute right-3 top-2.5 text-text-secondary text-sm">🔍</span>
+          <span class="absolute right-4 top-2.5 text-text-secondary text-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
       </div>
       
@@ -176,7 +181,7 @@
           <a class="cursor-pointer hover:text-accent-gold transition-colors" onclick="app.navigate('home')">Inicio</a>
           <a class="cursor-pointer hover:text-accent-gold transition-colors" onclick="app.navigate('catalog')">Capacitaciones</a>
           <div class="dropdown py-2">
-            <a href="#" class="cursor-pointer hover:text-accent-gold transition-colors">Especialidades ▾</a>
+            <a href="#" class="cursor-pointer hover:text-accent-gold transition-colors">Especialidades <i class="fa-solid fa-chevron-down text-xs ml-1"></i></a>
             <div class="dropdown-menu">
               <a onclick="app.setFilter('Legal')" class="cursor-pointer">Legal Empresarial</a>
               <a onclick="app.setFilter('Finanzas')" class="cursor-pointer">Finanzas y Tributación</a>
@@ -209,9 +214,9 @@
           <div class="logo mb-4">Laboralize<span class="gold-dot">.</span></div>
           <p class="text-text-secondary text-sm mb-6">Plataforma premium de capacitación corporativa, legal y tributaria para empresas y profesionales en Perú y Latinoamérica.</p>
           <div class="flex gap-4">
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">in</a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">yt</a>
-            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all">ig</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all"><i class="fa-brands fa-youtube text-lg"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-gold hover:text-black transition-all"><i class="fa-brands fa-instagram text-lg"></i></a>
           </div>
         </div>
         
@@ -250,8 +255,10 @@
       
       <div class="pt-8 border-t border-glass-border flex flex-col md:flex-row justify-between items-center text-text-secondary text-sm gap-4">
         <p>&copy; 2026 Laboralize. Todos los derechos reservados.</p>
-        <div class="text-2xl tracking-widest text-white/50">
-          VISA ◯◯ AMEX
+        <div class="flex gap-3 text-2xl text-white/50">
+          <i class="fa-brands fa-cc-visa hover:text-white transition-colors cursor-pointer"></i>
+          <i class="fa-brands fa-cc-mastercard hover:text-white transition-colors cursor-pointer"></i>
+          <i class="fa-brands fa-cc-amex hover:text-white transition-colors cursor-pointer"></i>
         </div>
       </div>
     </div>

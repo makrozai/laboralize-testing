@@ -22,7 +22,7 @@ const path = require('path');
   console.log('Saved tw_desktop_b2b_modal.png');
   
   // Close B2B Modal
-  await pageDesktop.locator('text=×').click();
+  await pageDesktop.locator('.fa-xmark').first().click();
   await pageDesktop.waitForTimeout(500);
 
   // Navigate to course detail
@@ -31,7 +31,7 @@ const path = require('path');
   
   // Open Trailer Modal
   // First, we need to click the trailer image (it has onclick="app.playTrailer...")
-  await pageDesktop.locator('text=Ver Trailer').first().click();
+  await pageDesktop.locator('.lg\\:block').locator('text=Ver Trailer').click();
   await pageDesktop.waitForTimeout(1000);
   await pageDesktop.screenshot({ path: 'tw_desktop_trailer_modal.png', fullPage: false });
   console.log('Saved tw_desktop_trailer_modal.png');
